@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>큰별의 자유 공간</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Song+Myung&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0b1220;
+    --bg-alt: #10192b;
+    --bg-card: #131e33;
+    --text: #e8ecf4;
+    --muted: #93a0b8;
+    --line: #24304a;
+    --gold: #e8b86d;
+    --gold-dim: #b98f52;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans KR', -apple-system, sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 5vw;
+    background: rgba(11,18,32,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logo{
+    font-family: 'Song Myung', serif;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .logo::before{
+    content: "★";
+    color: var(--gold);
+    font-size: 0.85rem;
+  }
+
+  nav ul{
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  nav a{
+    font-size: 0.9rem;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  nav a:hover{ color: var(--gold); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 5vw 4rem;
+    overflow: hidden;
+  }
+
+  .starfield{
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .star{
+    position: absolute;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.55;
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%, 100%{ opacity: 0.2; }
+    50%{ opacity: 0.85; }
+  }
+
+  .hero-inner{ position: relative; z-index: 1; max-width: 720px; }
+
+  .hero h1{
+    font-family: 'Song Myung', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin: 1.2rem 0 1rem;
+  }
+
+  .hero p{
+    color: var(--muted);
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* constellation line under title */
+  .constellation{
+    margin: 2.2rem auto 0;
+    width: 240px;
+    height: 40px;
+  }
+  .constellation circle{ fill: var(--gold); }
+  .constellation line{ stroke: var(--gold-dim); stroke-width: 1; }
+
+  @media (prefers-reduced-motion: reduce){
+    .star{ animation: none; opacity: 0.5; }
+  }
+
+  /* ---------- Sections ---------- */
+  section{
+    padding: 6rem 5vw;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .section-head{ margin-bottom: 2.5rem; }
+  .section-head h2{
+    font-family: 'Song Myung', serif;
+    font-size: 1.9rem;
+    font-weight: 400;
+    margin-top: 0.5rem;
+  }
+
+  /* about */
+  #about p{
+    color: var(--muted);
+    max-width: 620px;
+    font-size: 1.02rem;
+  }
+  #about p + p{ margin-top: 1rem; }
+
+  /* cards */
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .card{
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.6rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover{
+    border-color: var(--gold-dim);
+    transform: translateY(-2px);
+  }
+
+  .card .meta{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+  }
+
+  .card h3{
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin: 0.6rem 0 0.5rem;
+    line-height: 1.4;
+  }
+
+  .card p{
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .card.placeholder{
+    border-style: dashed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-align: center;
+    min-height: 140px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 3.5rem 5vw;
+    text-align: center;
+  }
+  footer h2{
+    font-family: 'Song Myung', serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+  }
+  footer p{ color: var(--muted); margin-bottom: 1.5rem; }
+
+  .contact-links{
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+  }
+  .contact-links a{
+    color: var(--gold);
+    border-bottom: 1px solid transparent;
+  }
+  .contact-links a:hover{ border-color: var(--gold); }
+
+  .copyright{
+    margin-top: 2.5rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    opacity: 0.6;
+  }
+
+  @media (max-width: 640px){
+    nav ul{ gap: 1.1rem; }
+    section{ padding: 4rem 6vw; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">큰별</div>
+  <nav>
+    <ul>
+      <li><a href="#about">소개</a></li>
+      <li><a href="#notes">글</a></li>
+      <li><a href="#projects">프로젝트</a></li>
+      <li><a href="#contact">연락</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="starfield" id="starfield"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Personal Archive</div>
+    <h1>큰별의 자유 공간</h1>
+    <p>배운 것, 생각한 것, 만든 것을 자유롭게 남겨두는 기록 공간입니다.</p>
+    <svg class="constellation" viewBox="0 0 240 40">
+      <line x1="20" y1="30" x2="90" y2="12" />
+      <line x1="90" y1="12" x2="150" y2="26" />
+      <line x1="150" y1="26" x2="220" y2="10" />
+      <circle cx="20" cy="30" r="3" />
+      <circle cx="90" cy="12" r="2.5" />
+      <circle cx="150" cy="26" r="3" />
+      <circle cx="220" cy="10" r="2.5" />
+    </svg>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-head">
+    <div class="eyebrow">About</div>
+    <h2>소개</h2>
+  </div>
+  <p>
+    (여기에 자기소개를 적어주세요) 예: 안녕하세요, 큰별입니다. 새로운 것을 배우고 정리하는 걸 좋아해서
+    이 공간에 배운 내용과 생각을 자유롭게 남기고 있습니다.
+  </p>
+  <p>
+    (관심 분야나 하는 일을 한두 문장 더 적어주면 좋아요.)
+  </p>
+</section>
+
+<section id="notes">
+  <div class="section-head">
+    <div class="eyebrow">Notes</div>
+    <h2>글 모음</h2>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="meta">2026.08</div>
+      <h3>교회돌봄앱으로 배우는 스키마 완전입문</h3>
+      <p>모바일 앱 데이터베이스 스키마 설계를 처음부터 정리한 노트.</p>
+    </div>
+    <div class="card placeholder">+ 새 글이 여기 카드로 추가됩니다</div>
+    <div class="card placeholder">+ 새 글이 여기 카드로 추가됩니다</div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-head">
+    <div class="eyebrow">Projects</div>
+    <h2>프로젝트</h2>
+  </div>
+  <div class="grid">
+    <div class="card placeholder">+ 진행 중이거나 완료한 프로젝트를 카드로 추가해보세요</div>
+    <div class="card placeholder">+ 프로젝트 카드 자리</div>
+  </div>
+</section>
+
+<footer id="contact">
+  <h2>연락하기</h2>
+  <p>궁금한 점이나 하고 싶은 이야기가 있다면 편하게 남겨주세요.</p>
+  <div class="contact-links">
+    <a href="mailto:your-email@example.com">이메일</a>
+    <a href="https://github.com/g01086484646-cloud">GitHub</a>
+  </div>
+  <div class="copyright">© 2026 큰별의 자유 공간</div>
+</footer>
+
+<script>
+  // 은은한 별 배경 생성 (동작 감소 설정을 존중)
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const field = document.getElementById('starfield');
+  const count = 40;
+  for(let i=0; i<count; i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2 + 1;
+    s.style.width = size + 'px';
+    s.style.height = size + 'px';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    if(!prefersReducedMotion){
+      s.style.animationDelay = (Math.random() * 4) + 's';
+    }
+    field.appendChild(s);
+  }
+</script>
+
+</body>
+</html>
