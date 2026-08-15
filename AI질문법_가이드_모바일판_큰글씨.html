@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI는 3층에서 멈추지 않습니다 · 모바일판</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --paper:#F2F4F8;--card:#fff;--ink:#0E1728;--ink-2:#3D4B63;--ink-3:#78869E;
+  --line:#DCE2EA;--line-2:#EDEFF3;
+  --teal:#0B8177;--teal-2:#E1F1EE;--amber:#B87A06;--amber-2:#FCF1DA;
+  --plum:#7C3A99;--plum-2:#F2E7F7;--crit:#A21F38;--crit-2:#FAE6EA;
+  --black:#111417;
+  --maroon:#6B2E17;
+  --disp:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--disp);
+  line-height:2.0;font-weight:500;letter-spacing:-.005em;
+  word-break:normal;overflow-wrap:break-word;line-break:normal;text-wrap:pretty}
+p{margin:0 0 18px;color:var(--ink-2)}
+b,strong{color:var(--ink);font-weight:900}
+ul{margin:0 0 18px;padding-left:24px;color:var(--ink-2)}
+li{margin-bottom:12px}
+img{display:block;width:100%;height:auto;border-radius:12px}
+.q{background:var(--teal-2);border-left:6px solid var(--teal);border-radius:0 12px 12px 0;
+   padding:18px 22px;color:#08554E;font-weight:700;font-size:1.06em;line-height:1.95}
+.finale{display:block;margin-top:14px;color:var(--maroon);font-weight:900;
+   font-size:2em;line-height:1.5;letter-spacing:-.02em}
+.bdg{display:inline-block;margin-left:10px;padding:4px 13px;border-radius:20px;
+   color:#fff;font-family:var(--disp);font-weight:900;
+   letter-spacing:-.01em;vertical-align:middle}
+.bdg.crit{background:var(--crit)}
+.bdg.teal{background:var(--teal)}
+.sec.hero{border-radius:16px;padding:30px 26px;margin-left:-26px;margin-right:-26px}
+.sec.hero.crit{background:#FFF8F9;border:2px solid var(--crit)}
+.sec.hero.teal{background:#F3FBFA;border:2px solid var(--teal)}
+.maker{position:relative;z-index:1;line-height:1.7}
+.mk-en{display:block;font-family:var(--mono);color:#4DD4C4;letter-spacing:.14em;
+   font-size:.82em;margin-bottom:3px}
+.mk-ko{display:block;font-family:var(--disp);color:#C4CDDA;font-weight:700;letter-spacing:-.01em}
+.kt{color:var(--teal);font-size:1.05em}
+.kc{color:var(--crit);font-size:1.05em}
+
+body{font-size:20px;padding-bottom:88px}
+#prog{position:fixed;top:0;left:0;height:3px;background:var(--teal);width:0;z-index:100;transition:width .1s}
+.wrap{max-width:680px;margin:0 auto}
+.cover{background:var(--black);color:#fff;padding:58px 18px 44px;position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;right:-70px;top:-70px;width:230px;height:230px;border-radius:50%;
+  background:radial-gradient(circle,rgba(11,129,119,.32),transparent 68%)}
+.cover .eb{font-family:var(--mono);font-size:13px;letter-spacing:.18em;color:#4DD4C4;margin:0 0 9px}
+.cover .maker{font-size:15px;margin:0 0 20px;padding-left:13px;border-left:3px solid #4DD4C4}
+.cover h1{font-size:40px;font-weight:900;line-height:1.1;letter-spacing:-.035em;margin:0 0 16px;position:relative;z-index:1}
+.cover h1 em{font-style:normal;color:#4DD4C4}
+.cover .sub{font-size:19px;color:#D3DBE5;line-height:1.8;margin:0 0 22px;font-weight:700;position:relative;z-index:1}
+.cover .ld{font-size:17px;color:#AEBAC9;line-height:2.0;position:relative;z-index:1;
+  border-left:3px solid #4DD4C4;padding-left:14px}
+.tocm{background:var(--card);border-bottom:1px solid var(--line);padding:16px 16px}
+.tocm .th{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--teal);font-weight:600;margin-bottom:10px}
+.tocm a{display:block;font-size:19px;font-weight:700;color:var(--ink-2);text-decoration:none;padding:15px 0;border-bottom:1px solid var(--line-2)}
+.tocm a:last-child{border:none}
+.tocm a .nn{font-family:var(--mono);font-size:14px;color:var(--teal);margin-right:9px;font-weight:600}
+main{padding:0 16px}
+.sec{scroll-margin-top:16px;padding:38px 0;border-bottom:1px solid var(--line)}
+.sec:last-child{border:none}
+.sec.hero{padding:26px 18px;margin-left:-8px;margin-right:-8px;border-radius:14px}
+.kick{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--teal);font-weight:600;margin-bottom:10px}
+h2{font-size:31px;font-weight:900;letter-spacing:-.03em;line-height:1.35;margin:0 0 18px}
+.lead{font-size:20px;line-height:2.0;color:var(--ink-2);margin-bottom:22px;font-weight:500}
+p{font-size:20px}
+figure{margin:22px -8px}
+figcaption{font-family:var(--mono);font-size:13px;letter-spacing:.08em;color:var(--ink-3);margin-top:8px;text-align:center}
+.bigq{background:var(--card);border:2px solid var(--teal);border-radius:14px;padding:24px 20px;margin:22px 0;
+  font-size:20px;font-weight:800;line-height:1.75;color:var(--teal);text-align:center}
+.cmpwrap{display:flex;flex-direction:column;gap:11px;margin:18px 0}
+.cmp{border-radius:13px;padding:20px 20px;border:2px solid}
+.cmp.crit{background:var(--crit-2);border-color:var(--crit)}
+.cmp.teal{background:var(--teal-2);border-color:var(--teal)}
+.cmp .cl{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;font-weight:600;margin-bottom:9px}
+.cmp.crit .cl{color:var(--crit)} .cmp.teal .cl{color:var(--teal)}
+.cmp .ca{font-size:18.5px;font-weight:900;line-height:1.75;color:var(--ink);margin-bottom:13px}
+.cmp .cr{font-size:17px;line-height:1.85}
+.cmp.crit .cr{color:#7A1730} .cmp.teal .cr{color:#0A5A52}
+.cmp .ar{font-family:var(--mono);font-weight:600;margin-right:4px}
+.box{border-radius:13px;padding:20px 20px;margin:22px 0;border:1px solid var(--line);border-left:6px solid}
+.box .bh{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;font-weight:600;margin-bottom:7px}
+.box .bb{font-size:19px;line-height:2.0}
+.box.warn{background:var(--amber-2);border-color:#F0E0BE;border-left-color:var(--amber)}
+.box.warn .bh{color:var(--amber)} .box.warn .bb{color:#6B4700}
+.box.real{background:var(--black);border-color:var(--black);border-left-color:#4DD4C4}
+.box.real .bh{color:#4DD4C4} .box.real .bb{color:#C4CDDA} .box.real .bb b{color:#fff}
+.box.tip{background:var(--plum-2);border-color:#E4D3EC;border-left-color:var(--plum)}
+.box.tip .bh{color:var(--plum)} .box.tip .bb{color:#3D1B4D} .box.tip .bb b{color:#2A0F38}
+.mcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;margin-bottom:14px}
+.mcard .mn{width:50px;height:50px;border-radius:13px;background:var(--teal-2);color:var(--teal);
+  display:grid;place-items:center;font-size:23px;font-weight:900;margin-bottom:14px}
+.mcard .mt{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.mcard .md{font-size:19px;line-height:2.0;color:var(--ink-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.chip{font-family:var(--disp);font-size:14.5px;font-weight:800;padding:8px 14px;border-radius:9px;
+  background:var(--teal);color:#fff;letter-spacing:-.01em}
+.ck{display:flex;gap:16px;align-items:flex-start;padding:20px 18px;border:1px solid var(--line);
+  border-radius:11px;background:var(--card);margin-bottom:9px;cursor:pointer}
+.ck input{display:none}
+.ck .cb{flex:0 0 32px;height:32px;border:3px solid var(--ink-3);border-radius:9px;margin-top:1px;position:relative;transition:.15s}
+.ck input:checked+.cb{background:var(--teal);border-color:var(--teal)}
+.ck input:checked+.cb::after{content:"✓";position:absolute;top:-2px;left:6px;color:#fff;font-size:22px;font-weight:900}
+.ck .ct b{display:block;font-size:19.5px;font-weight:900;margin-bottom:6px;line-height:1.55}
+.ck .ct em{font-style:normal;font-size:15px;color:var(--ink-3);font-family:var(--mono);line-height:1.5}
+.ck input:checked~.ct b{color:var(--teal)}
+.closing{background:var(--card);border:2px solid var(--teal);border-radius:16px;padding:30px 22px;margin-top:28px}
+.closing .ch{font-family:var(--mono);font-size:13px;letter-spacing:.16em;color:var(--teal);font-weight:600;margin-bottom:12px}
+.closing .cd{font-size:20px;line-height:2.05;color:var(--ink-2)}
+footer{padding:36px 16px 44px;font-size:15px;color:var(--ink-3);line-height:1.8}
+footer .fb{border-top:2px solid var(--ink);padding-top:15px}
+.top{position:fixed;right:16px;bottom:96px;width:58px;height:58px;border-radius:50%;background:var(--ink);
+  color:#fff;display:grid;place-items:center;font-size:24px;text-decoration:none;z-index:60;opacity:0;
+  transition:opacity .2s;box-shadow:0 5px 18px rgba(14,23,40,.28)}
+.top.on{opacity:.94}
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);
+  display:flex;z-index:70;padding-bottom:env(safe-area-inset-bottom)}
+.nav a{flex:1;text-align:center;padding:14px 2px 12px;font-size:13px;color:var(--ink-3);
+  text-decoration:none;font-family:var(--mono);font-weight:600;letter-spacing:.02em}
+.nav a.on{color:var(--teal)}
+.nav a i{display:block;font-style:normal;font-size:21px;margin-bottom:4px}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div class="wrap">
+  <div class="cover" id="top">
+    <p class="eb">HOW TO ASK · 2026</p>
+    <p class="maker"><span class="mk-en">Produced by</span><span class="mk-ko">모로코5 사랑방 가족들을 사랑하며 기도하는 장로</span></p>
+    <h1>AI는 3층에서<br><em>멈추지 않습니다</em></h1>
+    <p class="sub">질문의 높이가 답의 높이를 정합니다 — 무한한 빌딩을 제대로 쓰는 일곱 가지 습관</p>
+    <p class="ld">스마트폰을 쓰는 사람이라면 누구나 AI를 쓸 수 있게 되었습니다. 그런데 같은 도구를 쥐고도
+어떤 분은 3층까지만 올라가고, 어떤 분은 30층까지 올라갑니다. <b>차이를 만드는 것은 도구가 아니라 질문입니다.</b>
+이 문서는 그 차이를 일곱 가지 습관으로 정리했습니다.</p>
+  </div>
+  <div class="tocm">
+    <div class="th">차례</div>
+    <a href="#s01" class="key"><span class="nn">01</span>지시하지 말고 상의하기 <b class="kt">★</b></a>
+    <a href="#s02"><span class="nn">02</span>범위로 물어보기</a>
+    <a href="#s03"><span class="nn">03</span>전제를 열어 두기</a>
+    <a href="#s04" class="key"><span class="nn">04</span>반대편 요청하기 <b class="kc">★</b></a>
+    <a href="#more"><span class="nn">05</span>세 가지 습관 더</a>
+    <a href="#check"><span class="nn">06</span>질문 점검표</a>
+  </div>
+  <main>
+    
+<section class="sec hero teal" id="s01">
+  <div class="kick">첫 번째 습관<span class="bdg teal">★ 모든 것의 출발점</span></div>
+  <h2>지시하지 마시고, 상의하십시오</h2>
+  <p class="lead">AI는 대단히 높은 건물입니다. 실제로 무한하지는 않지만, 우리가 평소에 쓰는 높이에 비하면
+        사실상 끝이 보이지 않을 만큼 높습니다. 그런데 우리가 누르는 버튼은 대개 <b>3층</b>입니다.</p>
+  <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDIwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkFJ652864qUIOuGkuydgCDruYzrlKnqs7wgM+y4teyXkOyEnCDrqYjstpTripQg7IKs656MIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0ic2t5IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRUFGMUY3Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkJGQ0ZEIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJibGQiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwQjgxNzciIHN0b3Atb3BhY2l0eT0iLjEwIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMEI4MTc3IiBzdG9wLW9wYWNpdHk9Ii4zMCIvPjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjY0MCIgaGVpZ2h0PSI0MjAiIGZpbGw9InVybCgjc2t5KSIvPgo8IS0tIOq1rOumhCAtLT4KPGVsbGlwc2UgY3g9IjkwIiBjeT0iNTIiIHJ4PSI0MiIgcnk9IjE1IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOSIvPgo8ZWxsaXBzZSBjeD0iMTIwIiBjeT0iNDgiIHJ4PSIzMCIgcnk9IjEyIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOSIvPgo8ZWxsaXBzZSBjeD0iNTQwIiBjeT0iODgiIHJ4PSIzOCIgcnk9IjEzIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuODUiLz4KPCEtLSDruYzrlKkgLS0+CjxyZWN0IHg9IjIzOCIgeT0iMTAiIHdpZHRoPSIyMDAiIGhlaWdodD0iMzYwIiBmaWxsPSJ1cmwoI2JsZCkiIHN0cm9rZT0iIzBCODE3NyIgc3Ryb2tlLXdpZHRoPSIyIi8+CjwhLS0g7Li1IC0tPgo8ZyBzdHJva2U9IiMwQjgxNzciIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iLjQ1Ij4KPGxpbmUgeDE9IjIzOCIgeTE9IjQ2IiB4Mj0iNDM4IiB5Mj0iNDYiLz48bGluZSB4MT0iMjM4IiB5MT0iODIiIHgyPSI0MzgiIHkyPSI4MiIvPgo8bGluZSB4MT0iMjM4IiB5MT0iMTE4IiB4Mj0iNDM4IiB5Mj0iMTE4Ii8+PGxpbmUgeDE9IjIzOCIgeTE9IjE1NCIgeDI9IjQzOCIgeTI9IjE1NCIvPgo8bGluZSB4MT0iMjM4IiB5MT0iMTkwIiB4Mj0iNDM4IiB5Mj0iMTkwIi8+PGxpbmUgeDE9IjIzOCIgeTE9IjIyNiIgeDI9IjQzOCIgeTI9IjIyNiIvPgo8bGluZSB4MT0iMjM4IiB5MT0iMjYyIiB4Mj0iNDM4IiB5Mj0iMjYyIi8+PGxpbmUgeDE9IjIzOCIgeTE9IjI5OCIgeDI9IjQzOCIgeTI9IjI5OCIvPgo8bGluZSB4MT0iMjM4IiB5MT0iMzM0IiB4Mj0iNDM4IiB5Mj0iMzM0Ii8+PC9nPgo8IS0tIOywveusuCAtLT4KPGcgZmlsbD0iIzBCODE3NyIgb3BhY2l0eT0iLjE2Ij4KPHJlY3QgeD0iMjUyIiB5PSIxOCIgd2lkdGg9IjIyIiBoZWlnaHQ9IjIwIi8+PHJlY3QgeD0iMjg2IiB5PSIxOCIgd2lkdGg9IjIyIiBoZWlnaHQ9IjIwIi8+PHJlY3QgeD0iMzIwIiB5PSIxOCIgd2lkdGg9IjIyIiBoZWlnaHQ9IjIwIi8+PHJlY3QgeD0iMzU0IiB5PSIxOCIgd2lkdGg9IjIyIiBoZWlnaHQ9IjIwIi8+PHJlY3QgeD0iMzg4IiB5PSIxOCIgd2lkdGg9IjIyIiBoZWlnaHQ9IjIwIi8+CjxyZWN0IHg9IjI1MiIgeT0iNTQiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMCIvPjxyZWN0IHg9IjI4NiIgeT0iNTQiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMCIvPjxyZWN0IHg9IjMyMCIgeT0iNTQiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMCIvPjxyZWN0IHg9IjM1NCIgeT0iNTQiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMCIvPjxyZWN0IHg9IjM4OCIgeT0iNTQiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMCIvPgo8cmVjdCB4PSIyNTIiIHk9IjkwIiB3aWR0aD0iMjIiIGhlaWdodD0iMjAiLz48cmVjdCB4PSIyODYiIHk9IjkwIiB3aWR0aD0iMjIiIGhlaWdodD0iMjAiLz48cmVjdCB4PSIzMjAiIHk9IjkwIiB3aWR0aD0iMjIiIGhlaWdodD0iMjAiLz48cmVjdCB4PSIzNTQiIHk9IjkwIiB3aWR0aD0iMjIiIGhlaWdodD0iMjAiLz48cmVjdCB4PSIzODgiIHk9IjkwIiB3aWR0aD0iMjIiIGhlaWdodD0iMjAiLz4KPHJlY3QgeD0iMjUyIiB5PSIxMjYiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMCIvPjxyZWN0IHg9IjI4NiIgeT0iMTI2IiB3aWR0aD0iMjIiIGhlaWdodD0iMjAiLz48cmVjdCB4PSIzMjAiIHk9IjEyNiIgd2lkdGg9IjIyIiBoZWlnaHQ9IjIwIi8+PHJlY3QgeD0iMzU0IiB5PSIxMjYiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMCIvPjxyZWN0IHg9IjM4OCIgeT0iMTI2IiB3aWR0aD0iMjIiIGhlaWdodD0iMjAiLz4KPHJlY3QgeD0iMjUyIiB5PSIxNjIiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMCIvPjxyZWN0IHg9IjI4NiIgeT0iMTYyIiB3aWR0aD0iMjIiIGhlaWdodD0iMjAiLz48cmVjdCB4PSIzMjAiIHk9IjE2MiIgd2lkdGg9IjIyIiBoZWlnaHQ9IjIwIi8+PHJlY3QgeD0iMzU0IiB5PSIxNjIiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMCIvPjxyZWN0IHg9IjM4OCIgeT0iMTYyIiB3aWR0aD0iMjIiIGhlaWdodD0iMjAiLz4KPHJlY3QgeD0iMjUyIiB5PSIxOTgiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMCIvPjxyZWN0IHg9IjI4NiIgeT0iMTk4IiB3aWR0aD0iMjIiIGhlaWdodD0iMjAiLz48cmVjdCB4PSIzMjAiIHk9IjE5OCIgd2lkdGg9IjIyIiBoZWlnaHQ9IjIwIi8+PHJlY3QgeD0iMzU0IiB5PSIxOTgiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMCIvPjxyZWN0IHg9IjM4OCIgeT0iMTk4IiB3aWR0aD0iMjIiIGhlaWdodD0iMjAiLz4KPHJlY3QgeD0iMjUyIiB5PSIyMzQiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMCIvPjxyZWN0IHg9IjI4NiIgeT0iMjM0IiB3aWR0aD0iMjIiIGhlaWdodD0iMjAiLz48cmVjdCB4PSIzMjAiIHk9IjIzNCIgd2lkdGg9IjIyIiBoZWlnaHQ9IjIwIi8+PHJlY3QgeD0iMzU0IiB5PSIyMzQiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMCIvPjxyZWN0IHg9IjM4OCIgeT0iMjM0IiB3aWR0aD0iMjIiIGhlaWdodD0iMjAiLz4KPC9nPgo8IS0tIDPsuLUg6rCV7KGwIC0tPgo8cmVjdCB4PSIyMzgiIHk9IjI5OCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSI3MiIgZmlsbD0iI0M5ODQwNyIgb3BhY2l0eT0iLjE2Ii8+CjxyZWN0IHg9IjIzOCIgeT0iMjk4IiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjcyIiBmaWxsPSJub25lIiBzdHJva2U9IiNDOTg0MDciIHN0cm9rZS13aWR0aD0iMi40Ii8+Cjx0ZXh0IHg9IjMzOCIgeT0iMzQyIiBmb250LWZhbWlseT0iR290aGljIEExLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjEiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiM4QTVEMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjPsuLXsl5DshJwg66mI7LaY64ukPC90ZXh0Pgo8IS0tIOyCrOuejCAtLT4KPGNpcmNsZSBjeD0iMTY0IiBjeT0iMzMwIiByPSIxMiIgZmlsbD0iIzBFMTcyOCIvPgo8cmVjdCB4PSIxNTYiIHk9IjM0NCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjMwIiByeD0iNiIgZmlsbD0iIzBFMTcyOCIvPgo8bGluZSB4MT0iMTcyIiB5MT0iMzUyIiB4Mj0iMjMwIiB5Mj0iMzM2IiBzdHJva2U9IiMwRTE3MjgiIHN0cm9rZS13aWR0aD0iMy40IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9IjE2MCIgeTE9IjM3NCIgeDI9IjE1MiIgeTI9IjM5NiIgc3Ryb2tlPSIjMEUxNzI4IiBzdHJva2Utd2lkdGg9IjMuNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxsaW5lIHgxPSIxNjgiIHkxPSIzNzQiIHgyPSIxNzYiIHkyPSIzOTYiIHN0cm9rZT0iIzBFMTcyOCIgc3Ryb2tlLXdpZHRoPSIzLjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8IS0tIOychOyqvSDtmZTsgrTtkZwgLS0+CjxwYXRoIGQ9Ik00NzAgMzAwIEw0NzAgNDAiIHN0cm9rZT0iIzBCODE3NyIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1kYXNoYXJyYXk9IjggNiIvPgo8cGF0aCBkPSJNNDYyIDUyIEw0NzAgMzQgTDQ3OCA1MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMEI4MTc3IiBzdHJva2Utd2lkdGg9IjIuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjx0ZXh0IHg9IjQ4NiIgeT0iMTUwIiBmb250LWZhbWlseT0iR290aGljIEExLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMwQjgxNzciPuychOy4teydgDwvdGV4dD4KPHRleHQgeD0iNDg2IiB5PSIxNzIiIGZvbnQtZmFtaWx5PSJHb3RoaWMgQTEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iIzBCODE3NyI+6rOE7IaNPC90ZXh0Pgo8dGV4dCB4PSI0ODYiIHk9IjE5NCIgZm9udC1mYW1pbHk9IkdvdGhpYyBBMSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjMEI4MTc3Ij7snojsirXri4jri6Q8L3RleHQ+CjwhLS0g67CU64ulIC0tPgo8bGluZSB4MT0iMCIgeTE9IjM5NiIgeDI9IjY0MCIgeTI9IjM5NiIgc3Ryb2tlPSIjREFFMEU4IiBzdHJva2Utd2lkdGg9IjIuNCIvPgo8dGV4dCB4PSIzMjAiIHk9IjQxNiIgZm9udC1mYW1pbHk9IkdvdGhpYyBBMSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE3IiBmaWxsPSIjNzg4NjlFIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7qsbTrrLzsnZgg64aS7J206rCAIOyVhOuLiOudvCwg7Jqw66as6rCAIOuIhOultOuKlCDrsoTtirzsnbQg64u17J2YIOuGkuydtOulvCDsoJXtlanri4jri6Q8L3RleHQ+Cjwvc3ZnPg==" alt="FIG 1 · AI라는 빌딩과 3층에서 멈추는 습관" loading="lazy"><figcaption>FIG 1 · AI라는 빌딩과 3층에서 멈추는 습관</figcaption></figure>
+  
+  <p>이유는 단순합니다. <b>"이렇게 해 주세요"라고 말하는 순간, 답의 높이가 그 말에 갇히기 때문입니다.</b>
+        3층까지 가는 계단을 알려달라고 하면 AI는 정확히 3층까지 안내해 드립니다. 위층이 아무리 많아도요.</p>
+        <p>반대로 <b>"이 문제를 어떻게 접근하면 좋을까요?"</b>라고 여쭤보시면, AI는 3층뿐 아니라
+        5층·10층·30층을 오르는 각각의 방법을 함께 꺼내 놓습니다. 그중에서 고르시는 것은 여전히 사람의 몫이지만, <b>고를 수 있는 것이
+        늘어난다는 점</b>이 결정적입니다.</p>
+  <div class="cmpwrap">
+            <div class="cmp crit">
+              <div class="cl">지시형 · 3층에서 멈춤</div>
+              <div class="ca">이 이메일을 정중하게 고쳐 주세요.</div>
+              <div class="cr"><span class="ar">→</span> 정중한 이메일 한 통으로 제한된 답변</div>
+            </div>
+            <div class="cmp teal">
+              <div class="cl">상의형 · 위층까지</div>
+              <div class="ca">거래처에 납기 지연을 알려야 하는데, 관계를 해치지 않으려면 어떻게 하는 것이 좋을까요?</div>
+              <div class="cr"><span class="ar">→</span> 전화가 나을지 메일이 나을지 · 언제 알릴지 · 무엇을 먼저 말할지 · 그리고 초안까지 답변하며, 답변을 보고 올바른 다음 행동을 판단할 수 있음</div>
+            </div></div>
+  
+  
+  <div class="box tip"><div class="bh">한 가지 더</div><div class="bb">지시가 늘 나쁜 것은 아닙니다. <b>이미 무엇을 원하는지 확실히 아실 때는 지시가 빠릅니다.</b>
+        다만 "이게 최선인지 모르겠다" 싶은 순간에는 상의로 바꾸시는 것이 좋습니다.</div></div>
+</section>
+<section class="sec" id="s02">
+  <div class="kick">두 번째 습관</div>
+  <h2>하나의 숫자가 아니라 범위로 여쭤보십시오</h2>
+  <p class="lead">여행 경비로 100만원을 준비하셨다고 해 보겠습니다. 대부분은 "100만원으로 갈 수 있는 여행"을
+        물어보십니다. 그런데 이렇게 여쭤보시면 훨씬 좋은 답이 나옵니다.</p>
+  <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgMzAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IuyYiOyCsCDrspTsnITrpbwg64ST6rKMIOusvOyWtOuztOuKlCDrsKnrspUiPgo8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI0ZCRkNGRCIvPgo8IS0tIOy2lSAtLT4KPGxpbmUgeDE9IjcwIiB5MT0iMTc2IiB4Mj0iNTcwIiB5Mj0iMTc2IiBzdHJva2U9IiMwRTE3MjgiIHN0cm9rZS13aWR0aD0iMi40Ii8+CjxnIHN0cm9rZT0iIzBFMTcyOCIgc3Ryb2tlLXdpZHRoPSIyIj4KPGxpbmUgeDE9IjEzMCIgeTE9IjE2OCIgeDI9IjEzMCIgeTI9IjE4NCIvPgo8bGluZSB4MT0iMzIwIiB5MT0iMTY4IiB4Mj0iMzIwIiB5Mj0iMTg0Ii8+CjxsaW5lIHgxPSI1MTAiIHkxPSIxNjgiIHgyPSI1MTAiIHkyPSIxODQiLz48L2c+CjwhLS0g652867KoIC0tPgo8dGV4dCB4PSIxMzAiIHk9IjIwNiIgZm9udC1mYW1pbHk9IklCTSBQbGV4IE1vbm8sbW9ub3NwYWNlIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMEI4MTc3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41MOunjOybkDwvdGV4dD4KPHRleHQgeD0iMzIwIiB5PSIyMDYiIGZvbnQtZmFtaWx5PSJJQk0gUGxleCBNb25vLG1vbm9zcGFjZSIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzBFMTcyOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTAw66eM7JuQPC90ZXh0Pgo8dGV4dCB4PSI1MTAiIHk9IjIwNiIgZm9udC1mYW1pbHk9IklCTSBQbGV4IE1vbm8sbW9ub3NwYWNlIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjN0MzQTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xNTDrp4zsm5A8L3RleHQ+CjwhLS0g6riw7KG0IOyniOusuCAtLT4KPHJlY3QgeD0iMjUyIiB5PSIxMDYiIHdpZHRoPSIxMzYiIGhlaWdodD0iNDIiIHJ4PSI5IiBmaWxsPSIjRkNGMURBIiBzdHJva2U9IiNDOTg0MDciIHN0cm9rZS13aWR0aD0iMS42Ii8+Cjx0ZXh0IHg9IjMyMCIgeT0iMTMyIiBmb250LWZhbWlseT0iR290aGljIEExLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTcuNSIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iIzhBNUQwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+7Jes6riw66eMIOusvOyWtOuzuOuLpDwvdGV4dD4KPHBhdGggZD0iTTMyMCAxNTAgTDMyMCAxNjYiIHN0cm9rZT0iI0M5ODQwNyIgc3Ryb2tlLXdpZHRoPSIyIi8+CjwhLS0g7ZmV7J6lIOuylOychCAtLT4KPHJlY3QgeD0iMTMwIiB5PSIyMzgiIHdpZHRoPSIzODAiIGhlaWdodD0iMzAiIHJ4PSI4IiBmaWxsPSIjMEI4MTc3IiBvcGFjaXR5PSIuMTIiLz4KPGxpbmUgeDE9IjEzMCIgeTE9IjI1MyIgeDI9IjUxMCIgeTI9IjI1MyIgc3Ryb2tlPSIjMEI4MTc3IiBzdHJva2Utd2lkdGg9IjIuNCIgc3Ryb2tlLWRhc2hhcnJheT0iNyA1Ii8+CjxjaXJjbGUgY3g9IjEzMCIgY3k9IjI1MyIgcj0iNiIgZmlsbD0iIzBCODE3NyIvPgo8Y2lyY2xlIGN4PSI1MTAiIGN5PSIyNTMiIHI9IjYiIGZpbGw9IiM3QzNBOTkiLz4KPHRleHQgeD0iMzIwIiB5PSIyODgiIGZvbnQtZmFtaWx5PSJHb3RoaWMgQTEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNy41IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjMEI4MTc3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7snbTroIfqsowg64ST6rKMIOusvOyWtOuztOyLnOuptCDshKDtg53sp4DqsIAg7IS4IOuwsOqwgCDrkKnri4jri6Q8L3RleHQ+CjwhLS0g7JyEIOyEpOuqhSAtLT4KPHRleHQgeD0iMTMwIiB5PSI3NiIgZm9udC1mYW1pbHk9IkdvdGhpYyBBMSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjMEI4MTc3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7rjZQg7Iu46rKMIOqwgOuKlCDrspU8L3RleHQ+Cjx0ZXh0IHg9IjEzMCIgeT0iOTQiIGZvbnQtZmFtaWx5PSJHb3RoaWMgQTEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNS41IiBmaWxsPSIjM0Q0QjYzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7ruYTsmqnsnYQg7KSE7J2064qUIOuwqeuylTwvdGV4dD4KPHRleHQgeD0iNTEwIiB5PSI3NiIgZm9udC1mYW1pbHk9IkdvdGhpYyBBMSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjN0MzQTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7rjZQg7Ja57JeI7J2EIOuVjDwvdGV4dD4KPHRleHQgeD0iNTEwIiB5PSI5NCIgZm9udC1mYW1pbHk9IkdvdGhpYyBBMSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1LjUiIGZpbGw9IiMzRDRCNjMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuyWvOuniOuCmCDri6zrnbzsp4DripTsp4A8L3RleHQ+CjxsaW5lIHgxPSIxMzAiIHkxPSIxMDIiIHgyPSIxMzAiIHkyPSIxNjYiIHN0cm9rZT0iIzBCODE3NyIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1kYXNoYXJyYXk9IjQgNCIvPgo8bGluZSB4MT0iNTEwIiB5MT0iMTAyIiB4Mj0iNTEwIiB5Mj0iMTY2IiBzdHJva2U9IiM3QzNBOTkiIHN0cm9rZS13aWR0aD0iMS42IiBzdHJva2UtZGFzaGFycmF5PSI0IDQiLz4KPHRleHQgeD0iMzIwIiB5PSIzNCIgZm9udC1mYW1pbHk9IkdvdGhpYyBBMSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjMEUxNzI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7tlZjrgpjsnZgg7Iir7J6Q6rCAIOyVhOuLiOudvCDrspTsnITroZwg66y87Ja067O07Iut7Iuc7JikPC90ZXh0Pgo8L3N2Zz4=" alt="FIG 2 · 예산을 범위로 물었을 때 열리는 선택지" loading="lazy"><figcaption>FIG 2 · 예산을 범위로 물었을 때 열리는 선택지</figcaption></figure>
+  <div class="bigq">"제가 쓸 수 있는 돈은 100만원 정도입니다.<br>
+        50만원으로 줄이면 무엇을 포기해야 하고, 150만원으로 늘리면 무엇이 달라지는지 함께 알려 주시겠어요?" </div>
+  <p>이렇게 여쭤보면 세 가지를 한 번에 얻으실 수 있습니다.</p>
+        <p><b>아래쪽을 열면</b> 비용을 줄이는 방법이 보입니다. 100만원이 꼭 필요한 돈이 아니었을 수도 있습니다.</p>
+        <p><b>위쪽을 열면</b> 판단할 거리가 생깁니다. 50만원을 더 얹었을 때 여행의 질이 두 배가 아니라 네 배로
+        좋아진다면, <b>그 50만원을 더 마련해서 가는 쪽이 합리적일 수 있습니다.</b> 물어보지 않으면 그런 선택지가
+        있다는 사실조차 모른 채 지나갑니다.</p>
+        <p>그리고 <b>중간을 물었을 때보다 100만원짜리 답 자체가 좋아집니다.</b> 위아래와 비교되면서 무엇이
+        핵심이고 무엇이 곁가지인지가 드러나기 때문입니다.</p>
+  <div class="cmpwrap">
+            <div class="cmp crit">
+              <div class="cl">한 점만 물었을 때</div>
+              <div class="ca">예산 100만원으로 갈 만한 여행지를 추천해 주세요.</div>
+              <div class="cr"><span class="ar">→</span> 100만원짜리 기획안 하나. 그것이 좋은지 나쁜지 판단할 기준이 없습니다.</div>
+            </div>
+            <div class="cmp teal">
+              <div class="cl">범위로 물었을 때</div>
+              <div class="ca">100만원 기준입니다. 50만원 안과 150만원 안도 같이 보여 주시고, 차이가 어디서 생기는지 알려 주세요.</div>
+              <div class="cr"><span class="ar">→</span> 세 개의 기획안 + 무엇에 돈이 들어가는지에 대한 이해</div>
+            </div></div>
+  
+  
+  <div class="box tip"><div class="bh">한 가지 더</div><div class="bb">여행뿐 아니라 <b>거의 모든 결정</b>에 통합니다. 이사 예산, 장비 구입, 채용 인원, 공부 시간,
+        사업 규모 — 숫자가 들어가는 자리라면 어디든 "위아래를 함께" 여쭤보십시오.</div></div>
+</section>
+<section class="sec" id="s03">
+  <div class="kick">세 번째 습관</div>
+  <h2>질문에 숨은 전제를 열어 두십시오</h2>
+  <p class="lead">AI는 <b>여쭤보신 것에 답합니다.</b> 그런데 우리 질문에는 대개 스스로도 눈치채지 못한 전제가
+        함께 들어 있습니다. 그 전제가 틀렸다면, 답이 아무리 훌륭해도 방향이 어긋납니다.</p>
+  <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgMzIwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IuyniOusuOyXkCDri7TquLQg7KCE7KCc6rCAIOuLteydhCDqsIDrkZTri6QiPgo8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjMyMCIgZmlsbD0iI0ZCRkNGRCIvPgo8IS0tIOyZvOyqvTog64ur7Z6MIOyniOusuCAtLT4KPHJlY3QgeD0iMzAiIHk9IjQ2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjIzMCIgcng9IjE0IiBmaWxsPSIjRkFFNkVBIiBzdHJva2U9IiNBMjFGMzgiIHN0cm9rZS13aWR0aD0iMS44Ii8+Cjx0ZXh0IHg9IjE1OCIgeT0iNzgiIGZvbnQtZmFtaWx5PSJJQk0gUGxleCBNb25vLG1vbm9zcGFjZSIgZm9udC1zaXplPSIxNSIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI0EyMUYzOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+7KCE7KCc6rCAIOuwle2ejCDsp4jrrLg8L3RleHQ+CjxyZWN0IHg9IjUyIiB5PSI5NCIgd2lkdGg9IjIxMiIgaGVpZ2h0PSI1MiIgcng9IjkiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI0EyMUYzOCIgc3Ryb2tlLXdpZHRoPSIxLjYiLz4KPHRleHQgeD0iMTU4IiB5PSIxMTYiIGZvbnQtZmFtaWx5PSJHb3RoaWMgQTEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNi41IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMEUxNzI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4i7J247Iqk7YOAIOq0keqzoCDrrLjqtazrpbw8L3RleHQ+Cjx0ZXh0IHg9IjE1OCIgeT0iMTM0IiBmb250LWZhbWlseT0iR290aGljIEExLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYuNSIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzBFMTcyOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NeqwnCDsjagg7KO87IS47JqUIjwvdGV4dD4KPCEtLSDsg4HsnpAg7JWIIOuLtSAtLT4KPHJlY3QgeD0iNTIiIHk9IjE2NCIgd2lkdGg9IjIxMiIgaGVpZ2h0PSI5MCIgcng9IjkiIGZpbGw9IiNBMjFGMzgiIG9wYWNpdHk9Ii4wOCIvPgo8dGV4dCB4PSIxNTgiIHk9IjE5MCIgZm9udC1mYW1pbHk9IkdvdGhpYyBBMSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjN0ExNzMwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7ihpIg7J247Iqk7YOAIOusuOq1rCA16rCcPC90ZXh0Pgo8dGV4dCB4PSIxNTgiIHk9IjIxNCIgZm9udC1mYW1pbHk9IkdvdGhpYyBBMSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1LjUiIGZpbGw9IiM3QTE3MzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuusuOq1rOuKlCDsoovsirXri4jri6QuPC90ZXh0Pgo8dGV4dCB4PSIxNTgiIHk9IjIzNCIgZm9udC1mYW1pbHk9IkdvdGhpYyBBMSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiNBMjFGMzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuq3uOufsOuNsCDsnbjsiqTtg4DqsIAg66ee7J2E6rmM7JqUPzwvdGV4dD4KPCEtLSDsnpDrrLzsh6AgLS0+CjxyZWN0IHg9IjE0MCIgeT0iMjU2IiB3aWR0aD0iMzYiIGhlaWdodD0iMjYiIHJ4PSI1IiBmaWxsPSIjQTIxRjM4Ii8+CjxwYXRoIGQ9Ik0xNDggMjU2IHYtOSBhMTAgMTAgMCAwIDEgMjAgMCB2OSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQTIxRjM4IiBzdHJva2Utd2lkdGg9IjMiLz4KPCEtLSDsmKTrpbjsqr06IOyXtOumsCDsp4jrrLggLS0+CjxyZWN0IHg9IjM1NCIgeT0iNDYiIHdpZHRoPSIyNTYiIGhlaWdodD0iMjMwIiByeD0iMTQiIGZpbGw9IiNFMUYxRUUiIHN0cm9rZT0iIzBCODE3NyIgc3Ryb2tlLXdpZHRoPSIxLjgiLz4KPHRleHQgeD0iNDgyIiB5PSI3OCIgZm9udC1mYW1pbHk9IklCTSBQbGV4IE1vbm8sbW9ub3NwYWNlIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMEI4MTc3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7soITsoJzrpbwg7JewIOyniOusuDwvdGV4dD4KPHJlY3QgeD0iMzc2IiB5PSI5NCIgd2lkdGg9IjIxMiIgaGVpZ2h0PSI1MiIgcng9IjkiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzBCODE3NyIgc3Ryb2tlLXdpZHRoPSIxLjYiLz4KPHRleHQgeD0iNDgyIiB5PSIxMTYiIGZvbnQtZmFtaWx5PSJHb3RoaWMgQTEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNi41IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMEUxNzI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4iMzDrjIAg7Jes7ISx7JeQ6rKMIOyVjOumrOugpOuptDwvdGV4dD4KPHRleHQgeD0iNDgyIiB5PSIxMzQiIGZvbnQtZmFtaWx5PSJHb3RoaWMgQTEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNi41IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjMEUxNzI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7slrTrlqQg67Cp67KV7J20IOyii+ydhOq5jOyalD8iPC90ZXh0Pgo8cmVjdCB4PSIzNzYiIHk9IjE2NCIgd2lkdGg9IjIxMiIgaGVpZ2h0PSI5MCIgcng9IjkiIGZpbGw9IiMwQjgxNzciIG9wYWNpdHk9Ii4wOCIvPgo8dGV4dCB4PSI0ODIiIHk9IjE4OCIgZm9udC1mYW1pbHk9IkdvdGhpYyBBMSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1LjUiIGZpbGw9IiMwQTVBNTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuKGkiDsnbjsiqTtg4Agwrcg7KeA7JetIOunmOy5tO2OmDwvdGV4dD4KPHRleHQgeD0iNDgyIiB5PSIyMDgiIGZvbnQtZmFtaWx5PSJHb3RoaWMgQTEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNS41IiBmaWxsPSIjMEE1QTUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7ihpIg64Sk7J2067KEIOqygOyDiSDCtyDsmKTtlITrnbzsnbg8L3RleHQ+Cjx0ZXh0IHg9IjQ4MiIgeT0iMjMyIiBmb250LWZhbWlseT0iR290aGljIEExLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUuNSIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iIzBCODE3NyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+67mE6rWQ7ZWcIOuSpCDrrLjqtazquYzsp4A8L3RleHQ+CjwhLS0g7Je07IegIC0tPgo8Y2lyY2xlIGN4PSI0NzAiIGN5PSIyNjgiIHI9IjkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBCODE3NyIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxsaW5lIHgxPSI0NzkiIHkxPSIyNjgiIHgyPSI1MDAiIHkyPSIyNjgiIHN0cm9rZT0iIzBCODE3NyIgc3Ryb2tlLXdpZHRoPSIzIi8+CjxsaW5lIHgxPSI0OTQiIHkxPSIyNjgiIHgyPSI0OTQiIHkyPSIyNzYiIHN0cm9rZT0iIzBCODE3NyIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjx0ZXh0IHg9IjMyMCIgeT0iMjYiIGZvbnQtZmFtaWx5PSJHb3RoaWMgQTEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iIzBFMTcyOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+7KeI66y47JeQIOuLtOq4tCDsoITsoJzqsIAg64u17J2YIOuylOychOulvCDsoJXtlanri4jri6Q8L3RleHQ+Cjwvc3ZnPg==" alt="FIG 3 · 전제가 박힌 질문과 전제를 연 질문" loading="lazy"><figcaption>FIG 3 · 전제가 박힌 질문과 전제를 연 질문</figcaption></figure>
+  
+  <p>예를 들어 <b>"인스타그램 광고 문구를 다섯 개 써 주세요"</b>라고 여쭤보셨다고 하겠습니다.
+        AI는 좋은 문구 다섯 개를 드릴 것입니다. 그런데 이 질문에는 <b>"인스타그램이 우리 고객에게 맞는
+        경로다"</b>라는 전제가 들어 있습니다. 그 전제를 검토한 적이 없다면요.</p>
+        <p>같은 상황을 이렇게 여쭤보시면 답이 달라집니다.</p>
+        <p class="q">"동네 30대 여성분들께 저희 가게를 알리고 싶습니다. 어떤 방법이 좋을까요?
+        예산은 월 30만원 정도입니다."</p>
+        <p>그러면 인스타그램뿐 아니라 지역 맘카페, 네이버 지도, 전단, 제휴까지 놓고 비교한 뒤 문구까지
+        받으실 수 있습니다. <b>전제를 열어 두면 AI가 그 자리를 검토해 드립니다.</b></p>
+  
+  
+  
+  <div class="box tip"><div class="bh">한 가지 더</div><div class="bb">가끔 이렇게 되물어 보십시오. <b>"제 질문에 잘못된 전제가 있다면 짚어 주시겠어요?"</b>
+        이 한 줄이 방향을 크게 바꿔 놓을 때가 많습니다.</div></div>
+</section>
+<section class="sec hero crit" id="s04">
+  <div class="kick">네 번째 습관<span class="bdg crit">★ 판단을 지켜 줍니다</span></div>
+  <h2>반대편을 요청하십시오</h2>
+  <p class="lead">AI는 사람의 요청을 받아 답하도록 만들어졌습니다. 그래서 <b>기본적으로 도움이 되는 방향,
+        가능한 방향으로 답하려는 성질</b>이 있습니다. 이것은 대체로 좋은 일이지만, 판단이 필요한 자리에서는
+        위험합니다.</p>
+  <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgMzMwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Iuq4sOuzuOqwkuydgCDquI3soJXsnLzroZwg6riw7Jq47Ja07KC4IOyeiOuLpCI+CjxyZWN0IHdpZHRoPSI2NDAiIGhlaWdodD0iMzMwIiBmaWxsPSIjRkJGQ0ZEIi8+CjwhLS0g6riw65GlIC0tPgo8cmVjdCB4PSIzMTIiIHk9IjEyMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzBFMTcyOCIvPgo8cGF0aCBkPSJNMjgwIDI3MCBoODAgbDE0IDIyIGgtMTA4IHoiIGZpbGw9IiMwRTE3MjgiLz4KPCEtLSDquLDsmrjslrTsp4Qg7KCA7Jq464yAIC0tPgo8ZyB0cmFuc2Zvcm09InJvdGF0ZSgtMTEgMzIwIDEyMCkiPgo8cmVjdCB4PSIxMjAiIHk9IjExMyIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIxMiIgcng9IjYiIGZpbGw9IiMwRTE3MjgiLz4KPGxpbmUgeDE9IjE3MCIgeTE9IjEyNSIgeDI9IjE3MCIgeTI9IjE2OCIgc3Ryb2tlPSIjMEUxNzI4IiBzdHJva2Utd2lkdGg9IjIuNCIvPgo8bGluZSB4MT0iNDcwIiB5MT0iMTI1IiB4Mj0iNDcwIiB5Mj0iMTY4IiBzdHJva2U9IiMwRTE3MjgiIHN0cm9rZS13aWR0aD0iMi40Ii8+CjwhLS0g7Jm87Kq9IOygkeyLnDog6riN7KCVICjrrLTqsoHqsowpIC0tPgo8cmVjdCB4PSIxMDYiIHk9IjE2OCIgd2lkdGg9IjEyOCIgaGVpZ2h0PSI3MCIgcng9IjEwIiBmaWxsPSIjRTFGMUVFIiBzdHJva2U9IiMwQjgxNzciIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIxNzAiIHk9IjIwMCIgZm9udC1mYW1pbHk9IkdvdGhpYyBBMSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjMEI4MTc3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7qsIDriqXtlZwg7J207JygPC90ZXh0Pgo8dGV4dCB4PSIxNzAiIHk9IjIyMiIgZm9udC1mYW1pbHk9IkdvdGhpYyBBMSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjMEE1QTUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7quLDrs7jqsJI8L3RleHQ+CjwhLS0g7Jik66W47Kq9IOygkeyLnDog67aA7KCVICjqsIDrs43qsowpIC0tPgo8cmVjdCB4PSI0MDYiIHk9IjE2OCIgd2lkdGg9IjEyOCIgaGVpZ2h0PSI3MCIgcng9IjEwIiBmaWxsPSIjRkFFNkVBIiBzdHJva2U9IiNBMjFGMzgiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWRhc2hhcnJheT0iNiA0Ii8+Cjx0ZXh0IHg9IjQ3MCIgeT0iMjAwIiBmb250LWZhbWlseT0iR290aGljIEExLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiNBMjFGMzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuyViCDrkJjripQg7J207JygPC90ZXh0Pgo8dGV4dCB4PSI0NzAiIHk9IjIyMiIgZm9udC1mYW1pbHk9IkdvdGhpYyBBMSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjN0ExNzMwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7smpTssq3tlbTslbwg64KY7Ji0PC90ZXh0Pgo8L2c+CjwhLS0g7IaQICjstpTqsIApIC0tPgo8Y2lyY2xlIGN4PSI1MTIiIGN5PSI4MiIgcj0iMTYiIGZpbGw9IiM3QzNBOTkiIG9wYWNpdHk9Ii4xOCIvPgo8cGF0aCBkPSJNNTEyIDk4IEw1MTIgMTMwIiBzdHJva2U9IiM3QzNBOTkiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWRhc2hhcnJheT0iNSA0Ii8+CjxwYXRoIGQ9Ik01MDQgMTIwIEw1MTIgMTM0IEw1MjAgMTIwIiBmaWxsPSJub25lIiBzdHJva2U9IiM3QzNBOTkiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjx0ZXh0IHg9IjUxMiIgeT0iNjIiIGZvbnQtZmFtaWx5PSJHb3RoaWMgQTEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNi41IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjN0MzQTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4i67CY64yA7Y6464+EPC90ZXh0Pgo8dGV4dCB4PSI1MTIiIHk9IjQ0IiBmb250LWZhbWlseT0iR290aGljIEExLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYuNSIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iIzdDM0E5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+7LGE7JuMIOyjvOyEuOyalCI8L3RleHQ+Cjx0ZXh0IHg9IjMyMCIgeT0iMzA2IiBmb250LWZhbWlseT0iR290aGljIEExLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTcuNSIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iIzBFMTcyOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+6reg7ZiV7J2AIOyggOygiOuhnCDsmKTsp4Ag7JWK7Iq164uI64ukLiDsmpTssq3tlZjshZTslbwg7Ji164uI64ukLjwvdGV4dD4KPC9zdmc+" alt="FIG 4 · 기본값은 긍정 쪽으로 기울어 있습니다" loading="lazy"><figcaption>FIG 4 · 기본값은 긍정 쪽으로 기울어 있습니다</figcaption></figure>
+  
+  <p>"이 사업 아이디어 어떤가요?"라고 여쭤보시면 대체로 가능성부터 이야기합니다.
+        일부러 감추는 것이 아니라, <b>여쭤보신 방향으로 성실하게 답하다 보니 그렇게 되는 것</b>입니다.</p>
+        <p>그래서 <b>반대편은 따로 요청하셔야 합니다.</b> 그리고 한 번이 아니라 <b>수시로</b> 요청하시는 편이 좋습니다.
+        대화가 길어질수록 흐름이 한쪽으로 굳기 때문입니다.</p>
+        <p>부탁드리는 방식은 간단합니다.</p>
+        <ul>
+          <li>"이 계획이 실패한다면 가장 그럴듯한 이유가 무엇일까요?"</li>
+          <li>"부정적인 면을 70퍼센트, 긍정적인 면을 30퍼센트 비중으로 다시 정리해 주시겠어요?"</li>
+          <li>"제 생각에 반대하는 입장에서 가장 강한 반론을 세 가지 들어 주세요."</li>
+          <li>"이 판단에서 제가 확인하지 않은 사실이 있다면 무엇일까요?"</li>
+        </ul>
+  
+  
+  <div class="box real"><div class="bh">실제로 있었던 일</div><div class="bb"><b>실제 사례를 하나 말씀드리겠습니다.</b> 어떤 분과 스무 번이 넘는 대화로 사업계획서를
+        만든 적이 있습니다. 시장 규모를 계산하고, 재무를 5개년으로 짜고, 문서를 열 개 넘게 만들었습니다.<br><br>
+        그런데 <b>그동안 저는 경쟁사를 한 번도 조사해 보자고 말씀드리지 않았습니다.</b> 사용자께서 물어보지
+        않으셨기 때문입니다. 나중에 확인해 보니 그 시장에는 이미 압도적인 1위 사업자가 있었고, 계획의
+        상당 부분을 다시 써야 했습니다.<br><br>
+        <b>AI는 요청받은 방향으로 성실하게 갑니다. 방향 자체를 의심하는 일은 아직 사람의 몫입니다.</b></div></div>
+  <div class="box tip"><div class="bh">한 가지 더</div><div class="bb">너무 낙담하실 필요는 없습니다. 예전에는 이런 균형을 혼자 잡으셔야 했지만, 이제는
+        <b>"반대편도 채워 주세요"라는 한 마디로 AI에게 그 일을 맡기실 수 있습니다.</b> 도구의 성질을
+        아시고 쓰시면, 그 성질은 더 이상 약점이 아닙니다.</div></div>
+</section>
+    <section class="sec" id="more">
+      <div class="kick">다섯 번째부터 일곱 번째까지</div>
+      <h2>여기에 세 가지를<br>더 얹으시면 좋습니다</h2>
+      <p class="lead">앞의 네 가지가 방향을 정하는 습관이라면, 이 세 가지는 <b>답의 정확도를 올리는 습관</b>입니다.</p>
+      <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Iuyii+ydgCDsp4jrrLjsnLzroZwg7Jis65286rCA64qUIOuLqOqzhCI+CjxyZWN0IHdpZHRoPSI2NDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjRkJGQ0ZEIi8+CjxnIGZvbnQtZmFtaWx5PSJHb3RoaWMgQTEsc2Fucy1zZXJpZiI+CjwhLS0g6rOE64uoIC0tPgo8cmVjdCB4PSI0MCIgeT0iMzMwIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjQwIiByeD0iNyIgZmlsbD0iI0VERUZGMyIgc3Ryb2tlPSIjREFFMEU4IiBzdHJva2Utd2lkdGg9IjEuOCIvPgo8dGV4dCB4PSI2MCIgeT0iMzU2IiBmb250LXNpemU9IjE3LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMzRDRCNjMiPuKRoCDsp4Dsi5zqsIAg7JWE64uI6528IOyDgeydmOuhnDwvdGV4dD4KPHJlY3QgeD0iNzAiIHk9IjI4MiIgd2lkdGg9IjQ3MCIgaGVpZ2h0PSI0MCIgcng9IjciIGZpbGw9IiNFOUYzRjEiIHN0cm9rZT0iIzlDQ0JDNSIgc3Ryb2tlLXdpZHRoPSIxLjgiLz4KPHRleHQgeD0iOTAiIHk9IjMwOCIgZm9udC1zaXplPSIxNy41IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjMEI4MTc3Ij7ikaEg67KU7JyE66W8IOuEk+2YgOyEnDwvdGV4dD4KPHJlY3QgeD0iMTAwIiB5PSIyMzQiIHdpZHRoPSI0NDAiIGhlaWdodD0iNDAiIHJ4PSI3IiBmaWxsPSIjRTFGMUVFIiBzdHJva2U9IiMwQjgxNzciIHN0cm9rZS13aWR0aD0iMS44Ii8+Cjx0ZXh0IHg9IjEyMCIgeT0iMjYwIiBmb250LXNpemU9IjE3LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiMwQjgxNzciPuKRoiDsoITsoJzrpbwg7Je07Ja07IScPC90ZXh0Pgo8cmVjdCB4PSIxMzAiIHk9IjE4NiIgd2lkdGg9IjQxMCIgaGVpZ2h0PSI0MCIgcng9IjciIGZpbGw9IiNGQ0YxREEiIHN0cm9rZT0iI0M5ODQwNyIgc3Ryb2tlLXdpZHRoPSIxLjgiLz4KPHRleHQgeD0iMTUwIiB5PSIyMTIiIGZvbnQtc2l6ZT0iMTcuNSIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iIzhBNUQwMCI+4pGjIOuwmOuMgO2OuOuPhCDsmpTssq3tlbTshJw8L3RleHQ+CjxyZWN0IHg9IjE2MCIgeT0iMTM4IiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjQwIiByeD0iNyIgZmlsbD0iI0Y1RUFGOSIgc3Ryb2tlPSIjQjc4QkNCIiBzdHJva2Utd2lkdGg9IjEuOCIvPgo8dGV4dCB4PSIxODAiIHk9IjE2NCIgZm9udC1zaXplPSIxNy41IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjN0MzQTk5Ij7ikaQg7IOB7Zmp7J2EIOuovOyggCDslYzroKTso7zqs6A8L3RleHQ+CjxyZWN0IHg9IjE5MCIgeT0iOTAiIHdpZHRoPSIzNTAiIGhlaWdodD0iNDAiIHJ4PSI3IiBmaWxsPSIjRjJFN0Y3IiBzdHJva2U9IiM3QzNBOTkiIHN0cm9rZS13aWR0aD0iMS44Ii8+Cjx0ZXh0IHg9IjIxMCIgeT0iMTE2IiBmb250LXNpemU9IjE3LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiM3QzNBOTkiPuKRpSDqt7zqsbDrpbwg7ZmV7J247ZWY6rOgPC90ZXh0Pgo8cmVjdCB4PSIyMjAiIHk9IjQyIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjQwIiByeD0iNyIgZmlsbD0iIzBFMTcyOCIvPgo8dGV4dCB4PSIyNDAiIHk9IjY4IiBmb250LXNpemU9IjE3LjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiNmZmYiPuKRpiDsnbTslrTshJwg65CY66y87Jy866mwPC90ZXh0Pgo8IS0tIOyCrOuejCAtLT4KPGNpcmNsZSBjeD0iNTc2IiBjeT0iNDYiIHI9IjExIiBmaWxsPSIjMEUxNzI4Ii8+CjxyZWN0IHg9IjU2OSIgeT0iNTkiIHdpZHRoPSIxNCIgaGVpZ2h0PSIyNiIgcng9IjUiIGZpbGw9IiMwRTE3MjgiLz4KPGxpbmUgeDE9IjU2OSIgeTE9IjY2IiB4Mj0iNTUyIiB5Mj0iNTgiIHN0cm9rZT0iIzBFMTcyOCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9IjU3MiIgeTE9Ijg1IiB4Mj0iNTY2IiB5Mj0iMTAyIiBzdHJva2U9IiMwRTE3MjgiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxsaW5lIHgxPSI1ODAiIHkxPSI4NSIgeDI9IjU4NiIgeTI9IjEwMiIgc3Ryb2tlPSIjMEUxNzI4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L2c+Cjwvc3ZnPg==" alt="좋은 질문으로 올라가는 일곱 단계" loading="lazy">
+        <figcaption>FIG 5 · 질문의 일곱 계단</figcaption></figure>
+      
+    <div class="mcard">
+      <div class="mn">⑤</div>
+      <div class="mb">
+        <div class="mt">상황을 먼저 알려 주십시오</div>
+        <div class="md">같은 질문이라도 누가, 왜, 어떤 상황에서 묻는지에 따라 좋은 답이 달라집니다.
+         "글을 다듬어 주세요"보다 <b>"제가 중학생 학부모님께 보낼 안내문인데, 딱딱하지 않게 다듬어 주세요"</b>가
+         훨씬 잘 맞는 답을 받으실 수 있습니다. 상대·목적·분량·말투 중 두 가지만 알려 주셔도 크게 달라집니다.</div>
+        <div class="chips"><span class="chip">전달 대상</span><span class="chip">사용 목적</span><span class="chip">분량과 형식</span><span class="chip">피하고 싶은 것</span></div>
+      </div>
+    </div>
+    <div class="mcard">
+      <div class="mn">⑥</div>
+      <div class="mb">
+        <div class="mt">근거와 확신도를 물어보십시오</div>
+        <div class="md">AI는 확실한 것과 추측한 것을 <b>같은 어조로</b> 말합니다. 표 안에 들어간 숫자는 특히 사실처럼
+         보입니다. 그래서 중요한 판단에는 <b>"이 가운데 확실한 것과 추정한 것을 나눠 주세요"</b>라고
+         여쭤보시는 것이 좋습니다. 최신 정보가 필요한 일이라면 <b>"직접 확인이 필요한 항목을 표시해 주세요"</b>도
+         함께 부탁하십시오.</div>
+        <div class="chips"><span class="chip">확실 vs 추정 구분</span><span class="chip">출처 명시</span><span class="chip">확인 필요 항목</span><span class="chip">언제 기준 정보인지</span></div>
+      </div>
+    </div>
+    <div class="mcard">
+      <div class="mn">⑦</div>
+      <div class="mb">
+        <div class="mt">한 번에 끝내지 마시고 이어서 되물으십시오</div>
+        <div class="md">첫 답변은 <b>출발점</b>이지 결론이 아닙니다. 가장 좋은 답은 대개 세 번째, 네 번째 대화에서
+         나옵니다. "이 부분만 더 자세히", "다른 방향으로도 한 번", "제 상황에서는 이 부분이 걸리는데요"처럼
+         이어 가시면 처음에는 보이지 않던 것이 나옵니다. <b>3층에서 30층으로 가는 길은 대개 계단입니다.</b></div>
+        <div class="chips"><span class="chip">더 깊이</span><span class="chip">다른 방향으로</span><span class="chip">내 상황에 맞게</span><span class="chip">그래서 무엇부터</span></div>
+      </div>
+    </div>
+    </section>
+    <section class="sec" id="check">
+      <div class="kick">보내기 전에</div>
+      <h2>질문 점검표</h2>
+      <p class="lead">중요한 질문을 보내시기 전에 한 번씩 눌러 보십시오. 일곱 개를 다 채우실 필요는 없습니다.
+      <b>두세 개만 지키셔도 답의 높이가 확연히 달라집니다.</b></p>
+      <label class="ck"><input type="checkbox"><span class="cb"></span><span class="ct"><b>지시가 아니라 상의로 여쭤보았는가</b><em>이렇게 해 주세요 → 어떻게 하면 좋을까요</em></span></label><label class="ck"><input type="checkbox"><span class="cb"></span><span class="ct"><b>범위를 넓혀서 물어보았는가</b><em>100만원 → 50만원과 150만원도 함께</em></span></label><label class="ck"><input type="checkbox"><span class="cb"></span><span class="ct"><b>숨은 전제를 열어 두었는가</b><em>인스타 문구 → 어떤 방법이 좋을까요</em></span></label><label class="ck"><input type="checkbox"><span class="cb"></span><span class="ct"><b>반대편을 요청하였는가</b><em>가능성 → 실패 이유도 함께</em></span></label><label class="ck"><input type="checkbox"><span class="cb"></span><span class="ct"><b>상황을 충분히 알려 주었는가</b><em>상대 · 목적 · 분량 · 말투</em></span></label><label class="ck"><input type="checkbox"><span class="cb"></span><span class="ct"><b>근거와 확신도를 확인하였는가</b><em>확실한 것과 추정한 것 구분</em></span></label><label class="ck"><input type="checkbox"><span class="cb"></span><span class="ct"><b>한 번으로 끝내지 않았는가</b><em>첫 답변은 출발점입니다</em></span></label>
+      <div class="closing">
+        <div class="ch">맺으며</div>
+        <div class="cd">예전에는 이 모든 것을 혼자 감당하셔야 했습니다. 넓게 보는 일, 반대편을 살피는 일,
+근거를 확인하는 일 모두가 사람의 몫이었습니다.<br><br>
+<b>이제는 그 일의 상당 부분을 AI에게 맡기실 수 있습니다.</b> 다만 맡기시려면 부탁을 하셔야 하고,
+부탁은 질문의 형태로 이루어집니다. <b>그래서 질문이 곧 실력이 되었습니다.</b><br><br>
+<span class="finale">빌딩은 이미 높이 서 있습니다. 지금 이 순간에도 계속 높아져 갑니다. 어느 층까지 올라갈지는 이제 여러분의 프롬프트(질문)가 정합니다.</span></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="fb">
+  이 문서의 삽화는 모두 SVG로 직접 제작하여 Base64로 포함하였습니다. 외부 이미지를 불러오지 않으므로
+  인터넷 연결이 없어도 그대로 보실 수 있습니다.<br><br>
+  본문의 예시는 이해를 돕기 위해 구성한 것이며, 실제 결과는 상황에 따라 달라질 수 있습니다.
+  </div></footer>
+</div>
+<a href="#top" class="top" id="tb">↑</a>
+<div class="nav" id="nv">
+  <a href="#top"><i>◈</i>표지</a>
+  <a href="#s01"><i>①</i>상의 ★</a>
+  <a href="#s02"><i>②</i>범위</a>
+  <a href="#s03"><i>③</i>전제</a>
+  <a href="#s04"><i>④</i>반대 ★</a>
+  <a href="#check"><i>✓</i>점검</a>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('prog'),tb=document.getElementById('tb');
+  function p(){var h=document.documentElement,r=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)||0;
+    b.style.width=r+'%';tb.classList.toggle('on',h.scrollTop>500);}
+  window.addEventListener('scroll',p,{passive:true});p();
+  var L=[].slice.call(document.querySelectorAll('#nv a'));
+  var S=L.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function spy(){var y=window.scrollY+140,c=0;
+    S.forEach(function(s,i){if(s&&s.offsetTop<=y)c=i;});
+    L.forEach(function(a,i){a.classList.toggle('on',i===c);});}
+  window.addEventListener('scroll',spy,{passive:true});spy();
+})();
+</script>
+</body>
+</html>
