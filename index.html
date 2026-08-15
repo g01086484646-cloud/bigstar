@@ -266,6 +266,65 @@
     color: var(--muted); font-size: 0.85rem; text-align:center; min-height: 140px;
   }
 
+  /* ---------- Guestbook ---------- */
+  .guestbook-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  .guestbook-card{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+    display: flex; gap: 0.9rem;
+    transition: border-color .2s, transform .2s;
+  }
+  .guestbook-card:hover{ border-color: var(--teal); transform: translateY(-2px); }
+  .gb-avatar{
+    flex-shrink: 0;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--teal));
+    display:flex; align-items:center; justify-content:center;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 800;
+    color: #0a0f1c;
+    font-size: 0.95rem;
+  }
+  .gb-body{ flex: 1; }
+  .gb-name{ font-weight: 600; font-size: 0.92rem; }
+  .gb-date{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-left: 0.5rem;
+  }
+  .gb-msg{ color: var(--muted); font-size: 0.87rem; margin-top: 0.4rem; }
+
+  .giscus-box{
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+  .giscus-box code{
+    display:block;
+    margin-top: 0.8rem;
+    background: var(--bg-alt);
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--teal);
+    text-align: left;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
   /* ---------- Footer ---------- */
   footer{
     border-top: 1px solid var(--line);
@@ -305,6 +364,7 @@
       <li><a href="#archive">자료실</a></li>
       <li><a href="#notes">글</a></li>
       <li><a href="#projects">프로젝트</a></li>
+      <li><a href="#guestbook">방명록</a></li>
       <li><a href="#contact">연락</a></li>
     </ul>
   </nav>
@@ -412,6 +472,28 @@
       </div>
     </div>
   </div>
+
+  <div class="section-head" style="margin-top: 3rem;">
+    <span class="eyebrow">Discussion</span>
+    <h2 style="font-size:1.3rem;">자료실 게시판</h2>
+    <p>자료에 대한 질문이나 의견을 남겨주세요.</p>
+  </div>
+  <script src="https://giscus.app/client.js"
+    data-repo="g01086484646-cloud/bigstar"
+    data-repo-id="R_kgDOT4RJrQ"
+    data-category="General"
+    data-category-id="DIC_kwDOT4RJrc4DDaAQ"
+    data-mapping="specific"
+    data-term="자료실-게시판"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+  </script>
 </section>
 
 <section id="notes">
@@ -434,6 +516,69 @@
     <div class="card placeholder">+ 진행 중이거나 완료한 프로젝트를 카드로 추가해보세요</div>
     <div class="card placeholder">+ 프로젝트 카드 자리</div>
   </div>
+</section>
+
+<section id="guestbook">
+  <div class="section-head">
+    <span class="eyebrow">Guestbook</span>
+    <h2>방명록</h2>
+    <p>다녀가신 분들이 남긴 글입니다. 아래 giscus 댓글창을 통해 누구나 자유롭게 남길 수 있어요.</p>
+  </div>
+
+  <div class="guestbook-grid">
+    <div class="guestbook-card">
+      <div class="gb-avatar">방</div>
+      <div class="gb-body">
+        <span class="gb-name">방문자</span><span class="gb-date">YYYY.MM.DD</span>
+        <p class="gb-msg">(예시) 자료실 문서 잘 보고 갑니다. 다음 글도 기대할게요!</p>
+      </div>
+    </div>
+    <div class="guestbook-card">
+      <div class="gb-avatar">방</div>
+      <div class="gb-body">
+        <span class="gb-name">방문자</span><span class="gb-date">YYYY.MM.DD</span>
+        <p class="gb-msg">(예시) 사이트 디자인이 깔끔하네요. 궤도 그래픽이 인상적입니다.</p>
+      </div>
+    </div>
+    <div class="guestbook-card">
+      <div class="gb-avatar">방</div>
+      <div class="gb-body">
+        <span class="gb-name">방문자</span><span class="gb-date">YYYY.MM.DD</span>
+        <p class="gb-msg">(예시) 스키마 입문 문서 덕분에 많이 배웠습니다. 감사합니다.</p>
+      </div>
+    </div>
+    <div class="guestbook-card">
+      <div class="gb-avatar">방</div>
+      <div class="gb-body">
+        <span class="gb-name">방문자</span><span class="gb-date">YYYY.MM.DD</span>
+        <p class="gb-msg">(예시) 새 프로젝트 업데이트도 자주 올려주세요, 응원합니다.</p>
+      </div>
+    </div>
+    <div class="guestbook-card">
+      <div class="gb-avatar">방</div>
+      <div class="gb-body">
+        <span class="gb-name">방문자</span><span class="gb-date">YYYY.MM.DD</span>
+        <p class="gb-msg">(예시) 자료 다운로드 링크가 있어서 정말 편리했어요.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://giscus.app/client.js"
+    data-repo="g01086484646-cloud/bigstar"
+    data-repo-id="R_kgDOT4RJrQ"
+    data-category="Show and tell"
+    data-category-id="DIC_kwDOT4RJrc4DDaAT"
+    data-mapping="specific"
+    data-term="방명록"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+  </script>
 </section>
 
 <footer id="contact">
