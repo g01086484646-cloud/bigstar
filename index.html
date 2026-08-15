@@ -185,8 +185,13 @@
   .feature-card p{ color: var(--muted); font-size: 0.86rem; }
 
   /* ---------- 자료실 ---------- */
+  .filter-row{
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap: wrap; gap: 1rem;
+    margin-bottom: 1.8rem;
+  }
   .filter-tabs{
-    display:flex; gap: 0.6rem; margin-bottom: 1.8rem; flex-wrap: wrap;
+    display:flex; gap: 0.6rem; flex-wrap: wrap;
   }
   .filter-tab{
     background: transparent;
@@ -203,11 +208,69 @@
     background: rgba(94,238,208,0.08);
   }
 
+  .view-toggle{
+    display:flex; gap: 0.3rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 0.25rem;
+    flex-shrink: 0;
+  }
+  .view-btn{
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    padding: 0.4rem 0.85rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    transition: all .2s;
+  }
+  .view-btn.active{
+    background: var(--teal);
+    color: #04231d;
+    font-weight: 600;
+  }
+
   .resource-grid{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.1rem;
   }
+
+  /* 리스트 보기 */
+  .resource-grid.list-view{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .resource-grid.list-view .resource-card{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1rem 1.4rem;
+  }
+  .resource-grid.list-view .resource-card p{ display: none; }
+  .resource-grid.list-view .resource-top{ margin: 0; }
+  .resource-grid.list-view .resource-foot{
+    border-top: none;
+    padding-top: 0;
+    flex-direction: row-reverse;
+    gap: 1rem;
+  }
+  .resource-grid.list-view h3{ font-size: 0.95rem; margin: 0; }
+
+  @media (max-width: 640px){
+    .resource-grid.list-view .resource-card{
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+    .resource-grid.list-view .resource-foot{
+      justify-content: space-between;
+      flex-direction: row;
+    }
+  }
+
   .resource-card{
     background: var(--card);
     border: 1px solid var(--line);
@@ -430,11 +493,17 @@
     <p>지금까지 정리한 문서와 코드 자료입니다. 카테고리를 눌러 필터링해보세요.</p>
   </div>
 
-  <div class="filter-tabs" role="tablist">
-    <button class="filter-tab active" data-filter="all">전체</button>
-    <button class="filter-tab" data-filter="doc">문서</button>
-    <button class="filter-tab" data-filter="code">코드</button>
-    <button class="filter-tab" data-filter="etc">기타</button>
+  <div class="filter-row">
+    <div class="filter-tabs" role="tablist">
+      <button class="filter-tab active" data-filter="all">전체</button>
+      <button class="filter-tab" data-filter="doc">문서</button>
+      <button class="filter-tab" data-filter="code">코드</button>
+      <button class="filter-tab" data-filter="etc">기타</button>
+    </div>
+    <div class="view-toggle" role="group" aria-label="보기 방식 전환">
+      <button class="view-btn active" data-view="grid" aria-label="카드로 보기">▦ 카드</button>
+      <button class="view-btn" data-view="list" aria-label="리스트로 보기">☰ 리스트</button>
+    </div>
   </div>
 
   <div class="resource-grid" id="resourceGrid">
@@ -445,19 +514,19 @@
       <h3>교회돌봄앱으로 배우는 스키마 완전입문</h3>
       <p>모바일 앱 데이터베이스 스키마 설계를 실제 사례로 처음부터 정리한 입문 문서.</p>
       <div class="resource-foot">
-        <span>2026.08</span>
-        <button class="download-btn">다운로드</button>
+        <span>2026.08 · <span class="view-count" data-key="schema-guide">👁 -</span></span>
+        <button class="download-btn" data-key="schema-guide">다운로드</button>
       </div>
     </div>
-    <div class="resource-card" data-type="etc">
+    <div class="resource-card" data-type="doc">
       <div class="resource-top">
-        <span class="file-tag tag-etc">ETC</span>
+        <span class="file-tag tag-doc">DOC</span>
       </div>
-      <h3>(새 자료 자리)</h3>
-      <p>이 자리에 새로운 자료를 추가하면 카드로 표시됩니다.</p>
+      <h3>AI 질문법 가이드 (모바일판 · 큰글씨)</h3>
+      <p>AI에게 원하는 답을 얻기 위한 질문법을 모바일에서 읽기 편한 큰 글씨로 정리한 가이드.</p>
       <div class="resource-foot">
-        <span>YYYY.MM</span>
-        <button class="download-btn">다운로드</button>
+        <span>2026.08 · <span class="view-count" data-key="ai-question-guide">👁 -</span></span>
+        <a class="download-btn" data-key="ai-question-guide" href="https://g01086484646-cloud.github.io/bigstar/AI%EC%A7%88%EB%AC%B8%EB%B2%95_%EA%B0%80%EC%9D%B4%EB%93%9C_%EB%AA%A8%EB%B0%94%EC%9D%BC%ED%8C%90_%ED%81%B0%EA%B8%80%EC%94%A8.html" target="_blank" rel="noopener">읽기</a>
       </div>
     </div>
     <div class="resource-card" data-type="code">
@@ -467,8 +536,8 @@
       <h3>(새 코드 자료 자리)</h3>
       <p>예제 코드나 스니펫을 정리해서 올려두는 자리입니다.</p>
       <div class="resource-foot">
-        <span>YYYY.MM</span>
-        <button class="download-btn">다운로드</button>
+        <span>YYYY.MM · <span class="view-count" data-key="code-placeholder">👁 -</span></span>
+        <button class="download-btn" data-key="code-placeholder">다운로드</button>
       </div>
     </div>
   </div>
@@ -606,6 +675,41 @@
           card.classList.add('hidden');
         }
       });
+    });
+  });
+
+  const viewBtns = document.querySelectorAll('.view-btn');
+  const resourceGrid = document.getElementById('resourceGrid');
+  viewBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      viewBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if(btn.dataset.view === 'list'){
+        resourceGrid.classList.add('list-view');
+      } else {
+        resourceGrid.classList.remove('list-view');
+      }
+    });
+  });
+
+  // 자료실 조회수 (countapi.xyz, 별도 가입/키 불필요)
+  const COUNTER_NAMESPACE = 'bigstar-g01086484646-cloud';
+  document.querySelectorAll('.view-count[data-key]').forEach(el => {
+    fetch(`https://api.countapi.xyz/get/${COUNTER_NAMESPACE}/${el.dataset.key}`)
+      .then(r => r.json())
+      .then(d => { el.textContent = `👁 ${d.value ?? 0}회`; })
+      .catch(() => { el.textContent = '👁 -'; });
+  });
+  document.querySelectorAll('.download-btn[data-key]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.key;
+      fetch(`https://api.countapi.xyz/hit/${COUNTER_NAMESPACE}/${key}`)
+        .then(r => r.json())
+        .then(d => {
+          const el = document.querySelector(`.view-count[data-key="${key}"]`);
+          if(el) el.textContent = `👁 ${d.value}회`;
+        })
+        .catch(() => {});
     });
   });
 </script>
